@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block "titulo" %}
+RESUMEN DE ACTIVOS DE CAMI
+{% endblock %}
+{% block "cuerpo" %}
+    {% if user.is_authenticated %}
+        {% if activos %}
+            <table border="1">
+                <caption><h1>LISTADO EQUIPOS OPTICA</h1></caption>
+                <tr>
+<!--
+	                <th>ASEGURABLE </th>
+                    <th>ASEGURADO  </th>
+-->
+                    <th>CODIGO     </th>
+                    <th>TIPO       </th>
+                    <th>MARCA      </th>
+                    <th>MODELO     </th>
+                    <th>SERIAL     </th>
+                    <th>VALOR DEC. </th>
+                    <th>UBICACIÓN </th>
+                    <th>DETALLE    </th>
+                </tr>
+                {% for activo in activos %}
+                    <tr>
+<!--
+                        <td>{{activo.asegurable}}</td>
+                        <td>{{activo.asegurado}}</td>
+-->
+                        <td>{{activo.codigo}}</td>
+                        <td>{{activo.modelo.tipo}}</td>
+                        <td>{{activo.modelo.marca}}</td>
+                        <td>{{activo.modelo.modelo}}</td>
+                        <td>{{activo.numero_serie}}</td>
+                        <td>{{activo.valor}}</td>
+                        <td>{{activo.ubicacion.ubicacion}}</td>
+                        <td>{{activo.detalle}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h1>AVISO!!</h1>
+            <h2>No hay Activos en el resumen.</h2>
+        {% endif %}
+    {% else %}
+        <h1>ERROR!!</h1>
+        <h2>Ud. debe estar autenticado para ver el resumen.</h2>
+    {%endif%}
+{% endblock %}
