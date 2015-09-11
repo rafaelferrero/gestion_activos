@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os;
 # Django settings for gestion_activos project.
 
@@ -165,3 +167,5 @@ LOGGING = {
         },
     }
 }
+
+GRAPPELLI_ADMIN_TITLE = u"CMSF - Gestión de Activos".encode("utf-8")

@@ -69,3 +69,4 @@ mysql2sqlite.sh
 .metadata/
 ambiente/
 c9-workspace/
+gestion_activos/statics
