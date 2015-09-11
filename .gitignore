@@ -70,3 +70,4 @@ mysql2sqlite.sh
 ambiente/
 c9-workspace/
 gestion_activos/statics
+.settings/
