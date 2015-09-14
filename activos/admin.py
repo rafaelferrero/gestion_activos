@@ -26,7 +26,24 @@ class ActivosAdmin(admin.ModelAdmin):
     list_filter = ('asegurable','asegurado','ubicacion','modelo__tipo__tipo')
     search_fields = ('codigo', 'numero_serie', 'nro_factura', 'detalle', 'ubicacion__ubicacion', 
                      'modelo__modelo', 'modelo__marca__marca', 'modelo__tipo__tipo')
+    actions = ['asegurar','no_asegurar','hacer_asegurable','hacer_no_asegurable']
 
+    def asegurar(self, request, queryset):
+        queryset.update(asegurado=True)
+    asegurar.short_description = "Marcar estos Activos como Asegurados"
+
+    def no_asegurar(self, request, queryset):
+        queryset.update(asegurado=False)
+    no_asegurar.short_description = "Marcar estos Activos como NO Asegurados"
+
+    def hacer_asegurable(self, request, queryset):
+        queryset.update(asegurable=True)
+    hacer_asegurable.short_description = "Marcar estos Activos como Asegurables"
+    
+    def hacer_no_asegurable(self, request, queryset):
+        queryset.update(asegurable=False)
+    hacer_no_asegurable.short_description = "Marcar estos Activos como NO Asegurables"
+    
 
 class EstadosAdmin(admin.ModelAdmin):
     list_display = ('id', 'estado')
