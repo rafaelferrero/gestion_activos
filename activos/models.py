@@ -60,7 +60,7 @@ class Activos(models.Model):
         (DOLLAR,'u$s'),
     )
 
-    codigo=models.CharField('Codigo Interno', max_length=7)
+    codigo=models.CharField('Codigo Interno', max_length=7, unique=True)
     numero_serie=models.CharField(max_length=200)
     modelo=models.ForeignKey(Modelos)
     nro_factura=models.CharField(max_length=50, blank=True, null=True)

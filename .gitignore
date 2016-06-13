@@ -71,3 +71,10 @@ ambiente/
 c9-workspace/
 gestion_activos/statics
 .settings/
+nginx-access.log
+nginx-error.log
+original_activos.sqlite3
+gestion_activos_nginx.conf
+gunicorn_start.sh
+uwsgi.ini
+uwsgi_params
