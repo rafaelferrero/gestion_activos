@@ -22,7 +22,15 @@ class ModelosAdmin(admin.ModelAdmin):
 
 
 class ActivosAdmin(admin.ModelAdmin):
-    list_display = ('codigo', 'moneda', 'valor','asegurable','asegurado','ubicacion', 'numero_serie', 'modelo','detalle')
+    list_display = ('codigo', 
+                    'moneda', 
+                    'valor', 
+                    'asegurable', 
+                    'asegurado', 
+                    'ubicacion', 
+                    'numero_serie', 
+                    'modelo', 
+                    'detalle')
     list_filter = ('asegurable','asegurado','ubicacion','modelo__tipo__tipo')
     search_fields = ('codigo', 'numero_serie', 'nro_factura', 'detalle', 'ubicacion__ubicacion', 
                      'modelo__modelo', 'modelo__marca__marca', 'modelo__tipo__tipo')

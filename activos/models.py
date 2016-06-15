@@ -32,7 +32,7 @@ class Modelos(models.Model):
     tipo = models.ForeignKey(Tipos)
     
     def __unicode__( self ):
-        return '%s - %s - %s' % (self.tipo, self.marca, self.modelo)
+        return "{0} - {1} - {2}".format(self.tipo, self.marca, self.modelo)
 
     class Meta:
         verbose_name = 'Modelo'
