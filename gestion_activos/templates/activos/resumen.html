@@ -5,7 +5,7 @@ RESUMEN DE ACTIVOS DE CAMI
 {% endblock %}
 {% block "cuerpo" %}
     {% if user.is_authenticated %}
-        {% if resumen %}
+        {% if activos %}
             <table border="1">
                 <caption><h1>RESUMEN DE ACTIVOS DE CAMI</h1></caption>
                 <tr>
@@ -18,7 +18,7 @@ RESUMEN DE ACTIVOS DE CAMI
                     <th>UBICACION  </th>
                     <th>MOVIMIENTOS</th>
                 </tr>
-                {% for registro in resumen %}
+                {% for registro in activos %}
                     <tr>
                         <td>{{registro.0.codigo}}</td>
                         <td>{{registro.0.modelo.tipo}}</td>

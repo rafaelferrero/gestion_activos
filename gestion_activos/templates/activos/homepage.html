@@ -20,12 +20,12 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listados de Activos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Todos los activos</a></li>
-                    <li><a href="#">Asegurables</a></li>
-                    <li><a href="#">Asegurados</a></li>
-                    <li><a href="#">NO Asegurados</a></li>
-                    <li><a href="#">Sin Valorizar</a></li>
-                    <li><a href="#">Asegurar</a></li>
+                    <li><a href="{% url 'resumen' %}" target="_blank">Todos los activos</a></li>
+                    <li><a href="{% url 'resumen' 'asegurables' %}" target="_blank">Asegurables</a></li>
+                    <li><a href="{% url 'resumen' 'asegurados' %}" target="_blank">Asegurados</a></li>
+                    <li><a href="{% url 'resumen' 'noasegurados' %}" target="_blank">NO Asegurados</a></li>
+                    <li><a href="{% url 'resumen' 'sinvalorizar' %}" target="_blank">Sin Valorizar</a></li>
+                    <li><a href="{% url 'resumen' 'asegurar' %}" target="_blank">Para el Seguro</a></li>
                     </li>
                 </ul>
             </li>
