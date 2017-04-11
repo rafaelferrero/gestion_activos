@@ -8,10 +8,19 @@ from decimal import *
 
 
 @login_required
+def index(request):
+    return render_to_response(
+        'homepage.html',
+        {},
+        context_instance=RequestContext(request)
+    )
+
+
+@login_required
 def getResumenGral(request):
     resumen = []
     registro = []
-    plantilla = 'resumen.djhtml'
+    plantilla = 'resumen.html'
     activos = Activos.objects.select_related()
     
     for item in activos:
@@ -34,7 +43,7 @@ def getResumenGral(request):
 
 @login_required
 def getResumenSeg(request, cmd=''):
-    plantilla = 'seguro.djhtml'
+    plantilla = 'seguro.html'
     activos = Activos.objects.all().select_related().order_by('codigo')
     stPesos = {}
     stDolar = {}
@@ -100,7 +109,7 @@ def getResumenSeg(request, cmd=''):
 
 @login_required
 def tmp(request):
-    plantilla = 'tmp.djhtml'
+    plantilla = 'tmp.html'
     activos = Activos.objects.all().select_related().order_by('codigo').filter(
                     ubicacion__ubicacion='OPTICA')
 

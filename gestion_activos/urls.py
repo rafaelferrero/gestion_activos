@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
-
-
-# Uncomment the next two lines to enable the admin:
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns(
@@ -12,7 +12,7 @@ urlpatterns = patterns(
 
     url(r'^admin/',
         include(admin.site.urls)),  # admin URLS
-
+    url(r'^$', 'activos.views.index', name='index'),
     url(r'^resumen/todos',
         'activos.views.getResumenGral'),
     url(r'^resumen/noasegurables$',
@@ -37,4 +37,4 @@ urlpatterns = patterns(
         {'cmd': 'asegurar'}),
     url(r'^tmp/',
         'activos.views.tmp',)
-)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
