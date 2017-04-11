@@ -7,7 +7,6 @@ from django.template.context import RequestContext
 from decimal import *
 
 
-@login_required
 def index(request):
     return render_to_response(
         'homepage.html',
@@ -16,7 +15,6 @@ def index(request):
     )
 
 
-@login_required
 def getResumenGral(request):
     resumen = []
     registro = []
@@ -41,7 +39,6 @@ def getResumenGral(request):
     )
 
 
-@login_required
 def getResumenSeg(request, cmd=''):
     plantilla = 'seguro.html'
     activos = Activos.objects.all().select_related().order_by('codigo')
@@ -107,7 +104,6 @@ def getResumenSeg(request, cmd=''):
     )
 
 
-@login_required
 def tmp(request):
     plantilla = 'tmp.html'
     activos = Activos.objects.all().select_related().order_by('codigo').filter(

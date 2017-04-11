@@ -15,16 +15,19 @@
           </h3>
 
           <ul class="nav masthead-nav">
-            <li class="active">
-              <a href="#">Gestión</a>
-            </li>
+            <li class="active"><a href="{% url 'admin:index' %}">Gestión de Activos</a></li>
 
-            <li>
-              <a href="#">Resumen</a>
-            </li>
-
-            <li>
-              <a href="#">Seguro</a>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listados de Activos<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Todos los activos</a></li>
+                    <li><a href="#">Asegurables</a></li>
+                    <li><a href="#">Asegurados</a></li>
+                    <li><a href="#">NO Asegurados</a></li>
+                    <li><a href="#">Sin Valorizar</a></li>
+                    <li><a href="#">Asegurar</a></li>
+                    </li>
+                </ul>
             </li>
           </ul>
         </div>
@@ -37,7 +40,7 @@
           y obtener resúmenes valorizados de los mismos.
         </p>
 
-        <p class="lead"><a class="btn btn-lg btn-info" href="#">Ingresa</a></p>
+        <p class="lead"><a class="btn btn-lg btn-info" href="{% url 'admin:index' %}">Ingresa</a></p>
       </div>
 
       <div class="mastfoot">
@@ -52,4 +55,5 @@
     </div>
 </div>
 </div>
+
 {% endblock %}
