@@ -88,6 +88,7 @@ class Activos(models.Model):
         'Valor Declarado',
         max_digits=11,
         decimal_places=2,
+        default=0,
         blank=True,
         null=True)
     detalle = models.CharField(
