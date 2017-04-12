@@ -1,27 +1,28 @@
 # -*- coding: utf-8 -*-
 
-import os;
-# Django settings for gestion_activos project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-ROOT_PATH = os.path.dirname( __file__ )
+ROOT_PATH = os.path.dirname(__file__)
 
 ADMINS = (
-    # ('Rafael E. Ferrero', 'rafael.ferrero@gmail.com'),
+    ('Rafael E. Ferrero', 'rafael.ferrero@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', #'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join( ROOT_PATH, 'activos.sqlite' ),                      # Or path to database file if using sqlite3.
+        # 'django.db.backends.mysql', Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join( ROOT_PATH, 'activos.sqlite' ), # Or path to database file if using sqlite3.
+        'NAME': '/home/clau/Dropbox/activos.sqlite',
         # The following settings are not used with sqlite3:
-        'USER': '', #os.environ['C9_USER'],
+        'USER': '',  # os.environ['C9_USER'],
         'PASSWORD': '',
-        'HOST': '', #os.environ['IP'],                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',  # Set to empty string for default.
     }
 }
 
@@ -54,7 +55,7 @@ USE_TZ = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join( ROOT_PATH, 'media' )
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -67,7 +68,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join( ROOT_PATH, 'statics' )
+STATIC_ROOT = os.path.join(ROOT_PATH, 'statics')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -75,16 +76,16 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (os.path.join(ROOT_PATH, "static"), )
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/static" or "C:/www/django/static".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -94,7 +95,7 @@ SECRET_KEY = 'u$s+z8u0h#s!v_^k@u_z)qpfb!$w7u(qu@n#mtwun_na3de$kv'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
