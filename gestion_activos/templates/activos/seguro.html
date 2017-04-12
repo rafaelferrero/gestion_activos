@@ -4,72 +4,67 @@
 RESUMEN DE ACTIVOS DE CAMI
 {% endblock %}
 {% block "cuerpo" %}
-    {% if user.is_authenticated %}
-        {% if activos %}
-            <table border="1">
-                <caption><h1>RESUMEN DE ACTIVOS PARA ASEGURAR DE CAMI</h1></caption>
+    {% if activos %}
+        <table border="1">
+            <caption><h1>RESUMEN DE ACTIVOS PARA ASEGURAR DE CAMI</h1></caption>
+            <tr>
+<!--
+                <th>ASEGURABLE </th>
+                <th>ASEGURADO  </th>
+-->
+                <th>CODIGO     </th>
+                <th>TIPO       </th>
+                <th>MARCA      </th>
+                <th>MODELO     </th>
+                <th>SERIAL     </th>
+                <th>MONEDA     </th>
+                <th>VALOR DEC. </th>
+                <th>UBICACIÓN  </th>
+            <!--    <th>DETALLE    </th> -->
+            </tr>
+            {% for activo in activos %}
                 <tr>
 <!--
-	                <th>ASEGURABLE </th>
-                    <th>ASEGURADO  </th>
+                    <td>{{activo.asegurable}}</td>
+                    <td>{{activo.asegurado}}</td>
 -->
-                    <th>CODIGO     </th>
-                    <th>TIPO       </th>
-                    <th>MARCA      </th>
-                    <th>MODELO     </th>
-                    <th>SERIAL     </th>
-                    <th>MONEDA     </th>
-                    <th>VALOR DEC. </th>
-                    <th>UBICACIÓN  </th>
-                <!--    <th>DETALLE    </th> -->
+                    <td>{{activo.codigo}}</td>
+                    <td>{{activo.modelo.tipo}}</td>
+                    <td>{{activo.modelo.marca}}</td>
+                    <td>{{activo.modelo.modelo}}</td>
+                    <td>{{activo.numero_serie}}</td>
+                    <td>{{activo.moneda}}</td>
+                    <td>{{activo.valor}}</td>
+                    <td>{{activo.ubicacion.ubicacion}}</td>
+                <!--    <td>{{activo.detalle}}</td> -->
                 </tr>
-                {% for activo in activos %}
-                    <tr>
-<!--
-                        <td>{{activo.asegurable}}</td>
-                        <td>{{activo.asegurado}}</td>
--->
-                        <td>{{activo.codigo}}</td>
-                        <td>{{activo.modelo.tipo}}</td>
-                        <td>{{activo.modelo.marca}}</td>
-                        <td>{{activo.modelo.modelo}}</td>
-                        <td>{{activo.numero_serie}}</td>
-                        <td>{{activo.moneda}}</td>
-                        <td>{{activo.valor}}</td>
-                        <td>{{activo.ubicacion.ubicacion}}</td>
-                    <!--    <td>{{activo.detalle}}</td> -->
-                    </tr>
+            {% endfor %}
+        </table>
+        {% if stPesos %}
+            <h2>Subtotal por tipos de equipos en pesos</h2>
+            <p>
+                {% for st, valor in stPesos.items %}
+                    <strong>{{st}}:</strong> {{valor}}<br>
                 {% endfor %}
-            </table>
-            {% if stPesos %}
-            	<h2>Subtotal por tipos de equipos en pesos</h2>
-            	<p>
-	            	{% for st, valor in stPesos.items %}
-	    	        	<strong>{{st}}:</strong> {{valor}}<br>
-	            	{% endfor %}
-            	</p>
-            {% endif %}
-           {% if tPesos%}
-	           <p><strong>Total en Pesos:</strong> {{tPesos}}</p>
-           {% endif %}
-           
-           {% if stDolar %}
-           	<h2>Subtotal por tipos de equipos en Dolares</h2>
-           	<p>
-           		{% for st, valor in stDolar.items %}
-	            	<strong>{{st}}:</strong> {{valor}}<br>
-           		{% endfor %}
-           	</p>
-           {% endif %}
-           {% if tDolar%}
-	           <p><strong>Total en Dolares:</strong> {{tDolar}}</p>
-           {% endif %}
-        {% else %}
-            <h1>AVISO!!</h1>
-            <h2>No hay Activos en el resumen.</h2>
+            </p>
         {% endif %}
+       {% if tPesos%}
+           <p><strong>Total en Pesos:</strong> {{tPesos}}</p>
+       {% endif %}
+
+       {% if stDolar %}
+        <h2>Subtotal por tipos de equipos en Dolares</h2>
+        <p>
+            {% for st, valor in stDolar.items %}
+                <strong>{{st}}:</strong> {{valor}}<br>
+            {% endfor %}
+        </p>
+       {% endif %}
+       {% if tDolar%}
+           <p><strong>Total en Dolares:</strong> {{tDolar}}</p>
+       {% endif %}
     {% else %}
-        <h1>ERROR!!</h1>
-        <h2>Ud. debe estar autenticado para ver el resumen.</h2>
-    {%endif%}
+        <h1>AVISO!!</h1>
+        <h2>No hay Activos en el resumen.</h2>
+    {% endif %}
 {% endblock %}

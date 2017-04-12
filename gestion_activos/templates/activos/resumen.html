@@ -4,48 +4,43 @@
 RESUMEN DE ACTIVOS DE CAMI
 {% endblock %}
 {% block "cuerpo" %}
-    {% if user.is_authenticated %}
-        {% if activos %}
-            <table border="1">
-                <caption><h1>RESUMEN DE ACTIVOS DE CAMI</h1></caption>
+    {% if activos %}
+        <table border="1">
+            <caption><h1>RESUMEN DE ACTIVOS DE CAMI</h1></caption>
+            <tr>
+                <th>CODIGO     </th>
+                <th>TIPO       </th>
+                <th>MARCA      </th>
+                <th>MODELO     </th>
+                <th>SERIAL     </th>
+                <th>DETALLES   </th>
+                <th>UBICACION  </th>
+                <th>MOVIMIENTOS</th>
+            </tr>
+            {% for registro in activos %}
                 <tr>
-                    <th>CODIGO     </th>
-                    <th>TIPO       </th>
-                    <th>MARCA      </th>
-                    <th>MODELO     </th>
-                    <th>SERIAL     </th>
-                    <th>DETALLES   </th>
-                    <th>UBICACION  </th>
-                    <th>MOVIMIENTOS</th>
+                    <td>{{registro.0.codigo}}</td>
+                    <td>{{registro.0.modelo.tipo}}</td>
+                    <td>{{registro.0.modelo.marca}}</td>
+                    <td>{{registro.0.modelo.modelo}}</td>
+                    <td>{{registro.0.numero_serie}}</td>
+                    <td>{{registro.0.detalle}}</td>
+                    <td>{{registro.0.ubicacion}}</td>
+                    <td>
+                    {% for movimiento in registro.1%}
+                        <ul><li><small>
+                        {{movimiento.id}} -
+                        {{movimiento.origen}} -
+                        {{movimiento.destino}} -
+                        {{movimiento.fecha|date:"d/m/Y"}}
+                        </small></li></ul>
+                    {% endfor %}
+                    </td>
                 </tr>
-                {% for registro in activos %}
-                    <tr>
-                        <td>{{registro.0.codigo}}</td>
-                        <td>{{registro.0.modelo.tipo}}</td>
-                        <td>{{registro.0.modelo.marca}}</td>
-                        <td>{{registro.0.modelo.modelo}}</td>
-                        <td>{{registro.0.numero_serie}}</td>
-                        <td>{{registro.0.detalle}}</td>
-                        <td>{{registro.0.ubicacion}}</td>
-                        <td>
-                        {% for movimiento in registro.1%}
-                            <ul><li><small>
-                            {{movimiento.id}} -
-                            {{movimiento.origen}} - 
-                            {{movimiento.destino}} - 
-                            {{movimiento.fecha|date:"d/m/Y"}}
-                            </small></li></ul>
-                        {% endfor %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-        {% else %}
-            <h1>AVISO!!</h1>
-            <h2>No hay ítems en el resumen.</h2>
-        {% endif %}
+            {% endfor %}
+        </table>
     {% else %}
-        <h1>ERROR!!</h1>
-        <h2>Ud. debe estar autenticado para ver el resumen.</h2>
-    {%endif%}
+        <h1>AVISO!!</h1>
+        <h2>No hay ítems en el resumen.</h2>
+    {% endif %}
 {% endblock %}
